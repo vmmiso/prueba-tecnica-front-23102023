@@ -8,6 +8,9 @@
   "endOfLine": "auto",
   "jsxSingleQuote": true,
   "bracketSpacing": true,
-  "plugins": ["prettier-plugin-tailwindcss"],
-  "pluginSearchDirs": false
+  "plugins": ["@trivago/prettier-plugin-sort-imports", "prettier-plugin-tailwindcss"],
+  "pluginSearchDirs": false,
+  "importOrder": ["^@core/(.*)$", "^@server/(.*)$", "^@ui/(.*)$", "^[./]"],
+  "importOrderSeparation": true,
+  "importOrderSortSpecifiers": true
 }

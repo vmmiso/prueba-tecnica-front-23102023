@@ -1,27 +1,11 @@
-# React + TypeScript + Vite
+# Prueba técnica front 23/10/2023
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+- Algunas partes se pueden mejorar y refactorizar, como el router o los directorios para los import.
 
-Currently, two official plugins are available:
+- El buscador quedaría mejorarlo para arreglar el caso en el que no se le pasa query al entrar por primera vez.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Se podría haber creado una lista infinita en lugar de paginación.
 
-## Expanding the ESLint configuration
+- No he visto necesidad de utilizar redux o context, las respuestas de la api ya se cachean con react-query. Aún así he creado una store persistente con zustand como alternativa para almacenar los ids de las películas visitadas y añadidas a favoritos (de esto último quedaría hacer el fetch de la data por id).
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-   },
-```
-
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+- No he visto forma para usar la API KEY, he utilizado el auth token en su lugar, está inyectado directamente en el código.

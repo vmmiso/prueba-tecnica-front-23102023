@@ -1,29 +1,38 @@
-import { useState } from 'react';
-import reactLogo from './assets/react.svg';
-import viteLogo from '/vite.svg';
-import './App.css';
+import { Link, Route, Routes } from 'react-router-dom';
+
+import ValidateMovie from './pages/MovieDetailsPage';
+import MoviesListPage from './pages/MoviesListPage';
+import MyRatedMoviesPage from './pages/MyRatedMoviesPage';
+import SearchMoviesPage from './pages/SearchMoviesPage';
 
 function App() {
-  const [count, setCount] = useState(0);
-
   return (
     <>
-      <div className='bg-red-200'>
-        <a href='https://vitejs.dev' target='_blank'>
-          <img src={viteLogo} className='logo' alt='Vite logo' />
-        </a>
-        <a href='https://react.dev' target='_blank'>
-          <img src={reactLogo} className='logo react' alt='React logo' />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className='card'>
-        <button onClick={() => setCount((count) => count + 1)}>count is {count}</button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className='read-the-docs'>Click on the Vite and React logos to learn more</p>
+      <header className='flex w-full justify-between bg-slate-500 p-2 text-white sm:px-10'>
+        <h1>Movies App</h1>
+        <nav>
+          <ul>
+            <li className='inline p-1 hover:text-slate-300 sm:p-4'>
+              <Link to='/'>Movies</Link>
+            </li>
+            <li className='inline p-1 hover:text-slate-300 sm:p-4'>
+              <Link to='/search'>Search</Link>
+            </li>
+            <li className='inline p-1 hover:text-slate-300 sm:p-4'>
+              <Link to='/mylist'>My list</Link>
+            </li>
+          </ul>
+        </nav>
+      </header>
+      <main className='p-3'>
+        <Routes>
+          <Route path='/' element={<MoviesListPage />} />
+          <Route path='movie/:id' element={<ValidateMovie />} />
+          <Route path='search' element={<SearchMoviesPage />} />
+          <Route path='mylist' element={<MyRatedMoviesPage />} />
+          <Route path='*' element={<div>Not found</div>} />
+        </Routes>
+      </main>
     </>
   );
 }
